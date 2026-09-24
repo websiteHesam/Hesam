@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hesam Shop | Digital Services</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+  --bg:#0b0b0a;
+  --bg2:#11110f;
+  --surface:#151512;
+  --surface2:#1b1a17;
+  --surface3:#23211c;
+  --cream:#f3efe5;
+  --text:#f7f4ed;
+  --muted:#9b978c;
+  --muted2:#716e66;
+  --line:#2b2924;
+  --gold:#c8a86a;
+  --gold2:#e0c487;
+  --gold-soft:rgba(200,168,106,.12);
+  --green:#61c7a0;
+  --red:#e57b7b;
+  --shadow:0 28px 90px rgba(0,0,0,.42);
+  --radius:26px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  color:var(--text);
+  font-family:Vazirmatn,Tahoma,sans-serif;
+  background:
+    radial-gradient(circle at 82% -8%,rgba(200,168,106,.13),transparent 28%),
+    radial-gradient(circle at 8% 18%,rgba(255,255,255,.035),transparent 22%),
+    var(--bg);
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;
+  background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.shell{max-width:1240px;margin:auto;min-height:100vh;padding:0 24px}
+.top{
+  height:82px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:50;background:rgba(11,11,10,.78);
+  backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.055)
+}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{
+  width:45px;height:45px;border-radius:15px;display:grid;place-items:center;
+  background:linear-gradient(145deg,#dfc78f,#9f7c3c);color:#17140e;
+  box-shadow:0 12px 35px rgba(200,168,106,.18);font-weight:900;font-size:20px;
+}
+.logo strong{font-size:18px;letter-spacing:-.4px}.logo span{display:block;font-size:9px;color:var(--muted);margin-top:2px}
+.top-actions{display:flex;gap:8px}
+.ghost{
+  background:rgba(255,255,255,.025);border:1px solid var(--line);color:#ddd8cc;
+  padding:10px 14px;border-radius:13px;transition:.2s
+}
+.ghost:hover{border-color:#5a4c32;background:var(--gold-soft)}
+main{padding:30px 0 110px}.page{display:none}.page.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+
+.hero{
+  min-height:440px;border:1px solid #343027;border-radius:34px;overflow:hidden;position:relative;
+  padding:68px 64px;background:
+    radial-gradient(circle at 82% 48%,rgba(200,168,106,.15),transparent 23%),
+    linear-gradient(135deg,#181713 0%,#10100e 58%,#0d0d0c 100%);
+  box-shadow:var(--shadow)
+}
+.hero:before{
+  content:"";position:absolute;width:520px;height:520px;border-radius:50%;
+  border:1px solid rgba(200,168,106,.12);right:-120px;top:-50px;
+  box-shadow:0 0 0 55px rgba(200,168,106,.025),0 0 0 110px rgba(200,168,106,.018)
+}
+.hero:after{
+  content:"H";position:absolute;right:90px;top:45px;font-size:260px;line-height:1;
+  font-weight:900;color:rgba(255,255,255,.018);pointer-events:none
+}
+.hero-content{position:relative;z-index:2;max-width:650px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;color:var(--gold2);background:var(--gold-soft);
+  padding:8px 13px;border:1px solid rgba(200,168,106,.22);border-radius:30px;font-size:10px;margin-bottom:18px
+}
+.dot{width:6px;height:6px;background:var(--gold2);border-radius:50%;box-shadow:0 0 13px rgba(224,196,135,.8)}
+h1{font-size:52px;line-height:1.2;margin:0 0 15px;letter-spacing:-2px}
+h1 b{color:var(--gold2);font-weight:900}.hero p{color:#aaa69b;line-height:2;font-size:14px;margin:0;max-width:575px}
+.hero-actions{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+.primary{
+  background:linear-gradient(135deg,#d8bd82,#ad8848);color:#17130b;border:0;border-radius:14px;
+  padding:13px 21px;font-weight:900;box-shadow:0 14px 35px rgba(200,168,106,.18);transition:.2s
+}
+.primary:hover{transform:translateY(-2px);filter:brightness(1.05)}
+.secondary{background:#191815;color:#e4dfd4;border:1px solid #37342d;border-radius:14px;padding:13px 21px;transition:.2s}
+.secondary:hover{border-color:#665537;background:#201e18}
+.hero-stats{position:absolute;left:64px;bottom:45px;display:flex;gap:10px;z-index:2}
+.stat{background:rgba(14,14,12,.72);border:1px solid #343129;padding:12px 16px;border-radius:15px;min-width:108px;backdrop-filter:blur(12px)}
+.stat strong{display:block;font-size:16px}.stat span{font-size:9px;color:#7f7b71}
+
+.section-head{display:flex;justify-content:space-between;align-items:end;margin:48px 4px 18px}
+.section-head h2{font-size:23px;margin:0;letter-spacing:-.5px}.section-head p{font-size:10px;color:var(--muted);margin:0}
+.services{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.service{
+  background:linear-gradient(145deg,#171713,#11110f);border:1px solid #2c2a24;border-radius:27px;
+  padding:14px;position:relative;overflow:hidden;transition:.3s
+}
+.service:hover{transform:translateY(-5px);border-color:#5a4b32;box-shadow:0 25px 65px rgba(0,0,0,.34)}
+.service-art{
+  height:210px;border-radius:21px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:22px;
+  background:radial-gradient(circle at 70% 25%,rgba(224,196,135,.25),transparent 26%),linear-gradient(145deg,#29231a,#151410)
+}
+.service.robot .service-art{background:radial-gradient(circle at 70% 25%,rgba(224,196,135,.22),transparent 24%),linear-gradient(145deg,#242018,#13120f)}
+.art-circle{position:absolute;width:210px;height:210px;border-radius:50%;border:1px solid rgba(224,196,135,.18);right:34px;top:-65px}
+.art-circle:after{content:"";position:absolute;inset:28px;border:1px solid rgba(224,196,135,.12);border-radius:50%}
+.art-icon{
+  position:absolute;right:63px;top:47px;width:92px;height:92px;border-radius:28px;
+  border:1px solid rgba(224,196,135,.28);display:grid;place-items:center;color:var(--gold2);
+  font-size:34px;background:rgba(0,0,0,.18);box-shadow:0 20px 45px rgba(0,0,0,.28)
+}
+.service-label{position:relative;z-index:2;background:rgba(7,7,6,.55);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:8px 11px;font-size:9px;color:#d7d0c2}
+.service-body{padding:18px 5px 5px}.service h3{margin:0 0 7px;font-size:18px}.service p{color:#8f8b81;font-size:11px;line-height:1.9;margin:0 0 15px}
+.service-foot{display:flex;align-items:center;justify-content:space-between;gap:10px}.service-price{font-weight:800;color:var(--gold2);font-size:11px}.mini-btn{background:#252117;color:#e4c989;border:1px solid #57472e;border-radius:11px;padding:10px 14px;font-size:10px;font-weight:800}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.feature{background:#13130f;border:1px solid #28261f;border-radius:20px;padding:19px;transition:.2s}.feature:hover{border-color:#51442f}.feature i{font-style:normal;font-size:20px;color:var(--gold2)}.feature h4{margin:10px 0 5px;font-size:13px}.feature p{color:#77746c;font-size:10px;line-height:1.8;margin:0}
+
+.back{background:none;border:0;color:#a5a196;padding:0;margin-bottom:18px;font-size:11px}.back b{color:#f1ede4;font-size:19px;margin-right:8px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:18px}
+.panel{background:linear-gradient(145deg,#171713,#11110f);border:1px solid #2d2b25;border-radius:26px;padding:24px;box-shadow:var(--shadow)}
+.panel-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.panel-title h2{margin:0;font-size:20px}.panel-title span{font-size:9px;color:#77736a}
+.field{margin-bottom:15px}.field label{display:block;font-size:10px;color:#c7c2b7;margin-bottom:8px}.req{color:#dca96b}
+.input,textarea,select{width:100%;background:#0d0d0b;color:#f5f2ea;border:1px solid #302e27;border-radius:13px;padding:13px;outline:none;transition:.2s}
+.input:focus,textarea:focus,select:focus{border-color:#9c7b43;box-shadow:0 0 0 3px rgba(200,168,106,.08)}
+textarea{min-height:175px;resize:vertical;line-height:2}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.hint{font-size:9px;color:#6e6b63;margin-top:6px}
+.price-box{display:flex;justify-content:space-between;align-items:center;background:#17140e;border:1px solid #4a3b25;padding:15px;border-radius:15px;margin:17px 0}
+.price-box span{font-size:10px;color:#958f82}.price-box strong{font-size:20px;color:var(--gold2)}.wide{width:100%;padding:14px;border-radius:13px;font-weight:900}
+.info-card{background:#141411;border:1px solid #2c2a24;border-radius:23px;padding:19px;position:sticky;top:105px}
+.info-card h3{font-size:14px;margin:0 0 14px}.info-list{display:grid;gap:10px}.info-row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #26241f;font-size:10px}.info-row:last-child{border:0}.info-row span{color:#77736a}.info-row b{color:#e5e0d6;text-align:left}
+.notice{padding:12px 13px;border-radius:13px;background:#19160f;border:1px solid #493a25;color:#bbaa83;font-size:10px;line-height:1.9;margin-bottom:14px}
+.options{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.opt{border:1px solid #302e27;background:#0f0f0d;color:#fff;border-radius:16px;padding:14px;text-align:right;transition:.2s}.opt:hover{border-color:#59492f}.opt.active{border-color:#b18c50;background:#211b11;box-shadow:inset 0 0 0 1px rgba(200,168,106,.25)}.opt strong{display:block;font-size:12px}.opt span{display:block;color:#77736a;font-size:9px;line-height:1.7;margin-top:6px}.opt em{display:block;color:var(--gold2);font-style:normal;font-size:10px;font-weight:800;margin-top:8px}
+
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.bank{border-radius:21px;padding:20px;background:linear-gradient(145deg,#282116,#15130e);border:1px solid #57452b}
+.bank .bank-chip{width:42px;height:30px;border-radius:8px;background:linear-gradient(135deg,#e5cf99,#a37c40);margin-bottom:24px}.bank-number{font-size:20px;letter-spacing:2px;direction:ltr;text-align:center;margin:12px 0 20px;color:#eee7d8}.bank-owner{display:flex;justify-content:space-between;font-size:10px;color:#a39b8d}
+.upload{border:1px dashed #4b463c;border-radius:18px;padding:35px 15px;text-align:center;background:#0d0d0b}.upload b{display:block;margin-bottom:7px}.upload span{font-size:10px;color:#746f65}
+
+.orders{display:grid;gap:10px}.order{background:#141411;border:1px solid #2b2923;border-radius:18px;padding:16px}.order-top{display:flex;justify-content:space-between;align-items:center}.badge{font-size:9px;padding:6px 9px;border-radius:9px;background:#17382e;color:#69d2aa}.badge.blue{background:#252019;color:#d2ae6d}.badge.orange{background:#3a2c18;color:#e0b765}.order small{color:#6f6b62;font-size:9px}.order p{font-size:10px;color:#9b968b;line-height:1.9;margin:8px 0 0}
+
+.admin-login{max-width:440px;margin:70px auto}.lock{width:64px;height:64px;border-radius:20px;background:#282116;border:1px solid #604b2c;display:grid;place-items:center;font-size:27px;color:var(--gold2);margin:0 auto 18px}.admin-login h2{text-align:center;margin:0 0 7px}.admin-login p{text-align:center;color:#757168;font-size:10px;margin-bottom:25px}
+.admin-shell{display:none}.admin-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.admin-head h2{margin:0;font-size:22px}.admin-head p{color:#77736a;font-size:10px;margin:5px 0 0}.logout{background:#2b1717;border:1px solid #5a2929;color:#ee9898;border-radius:11px;padding:9px 12px;font-size:10px}
+.dashboard{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:18px}.dash{background:#141411;border:1px solid #2b2923;border-radius:17px;padding:15px}.dash span{font-size:9px;color:#77736a}.dash strong{display:block;font-size:22px;margin-top:5px}.dash.blue strong{color:#d5b46f}.dash.green strong{color:#63caa3}.dash.orange strong{color:#dfb76e}
+.admin-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:15px}.admin-menu{background:#141411;border:1px solid #2b2923;border-radius:20px;padding:10px;height:max-content}.admin-menu button{width:100%;text-align:right;background:none;border:0;color:#827e74;padding:12px;border-radius:11px;font-size:10px}.admin-menu button.active,.admin-menu button:hover{background:#292116;color:#ead7ae}.admin-content{min-width:0}.admin-card{background:#141411;border:1px solid #2b2923;border-radius:20px;padding:18px;margin-bottom:12px}.admin-card h3{margin:0 0 15px;font-size:14px}.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:700px}.table th,.table td{text-align:right;padding:12px 10px;border-bottom:1px solid #25231e;font-size:9px}.table th{color:#6f6b62;font-weight:500}.table td{color:#c9c4b9}.table select{padding:7px;font-size:9px;width:auto}.setting-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.empty{text-align:center;padding:40px;color:#6d6960;font-size:11px}
+.bottom{display:none}.toast{position:fixed;right:24px;bottom:24px;background:#eee9df;color:#171511;padding:12px 17px;border-radius:12px;font-size:11px;opacity:0;transform:translateY(15px);transition:.25s;z-index:100;box-shadow:0 15px 45px rgba(0,0,0,.3)}.toast.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:800px){
+  .shell{padding:0 14px}.hero{padding:42px 26px;min-height:470px}.hero h1{font-size:38px}.hero:after{right:20px;top:80px;font-size:180px}.hero-stats{left:26px;bottom:27px}.layout,.pay-grid,.admin-layout{grid-template-columns:1fr}.info-card{position:static}.admin-menu{display:grid;grid-template-columns:repeat(3,1fr)}.admin-menu button{text-align:center}.dashboard{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .top{height:72px}.top-actions .ghost:first-child{display:none}.logo strong{font-size:16px}
+  main{padding-top:20px}.hero{padding:34px 21px;min-height:505px;border-radius:27px}.hero h1{font-size:31px;letter-spacing:-1px}
+  .hero p{font-size:12px}.hero-actions .primary,.hero-actions .secondary{width:100%}
+  .hero-stats{position:static;margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr)}.stat{min-width:0;padding:10px}.stat strong{font-size:13px}.stat span{font-size:8px}
+  .services,.features{grid-template-columns:1fr}.service-art{height:175px}.section-head{margin-top:36px}.section-head p{display:none}
+  .two,.options,.setting-grid{grid-template-columns:1fr}.dashboard{gap:8px}.dash{padding:12px}.dash strong{font-size:18px}.admin-menu{grid-template-columns:repeat(2,1fr)}
+  h1{font-size:29px}.panel{padding:18px}.bank-number{font-size:17px}.toast{right:14px;left:14px;text-align:center}
+}
+
+/* ===== Hesam Shop Pro V2 / Advanced Admin ===== */
+.admin-toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}
+.admin-search{flex:1;min-width:210px}
+.filter-select{width:170px!important}
+.admin-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:12px}
+.order-row{cursor:pointer;transition:.18s}
+.order-row:hover{background:#1b1914}
+.detail-overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(12px);z-index:200;display:none;align-items:center;justify-content:center;padding:16px}
+.detail-overlay.show{display:flex}
+.detail-modal{width:min(920px,100%);max-height:92vh;overflow:auto;background:#151512;border:1px solid #403a2d;border-radius:25px;box-shadow:0 30px 100px #0009;padding:22px}
+.detail-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:18px}
+.detail-head h2{margin:0;font-size:20px}
+.close-detail{border:1px solid #403a2d;background:#211f19;color:#d9d1c2;border-radius:11px;padding:8px 12px}
+.detail-columns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.detail-card{background:#10100e;border:1px solid #2d2a23;border-radius:17px;padding:15px}
+.detail-card h4{margin:0 0 12px;color:#d8bd82;font-size:12px}
+.detail-item{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #25231e;padding:9px 0;font-size:10px}
+.detail-item:last-child{border-bottom:0}
+.detail-item span{color:#77736a}.detail-item b{color:#e6e1d7;text-align:left;max-width:68%;overflow-wrap:anywhere}
+.note-box{min-height:100px;resize:vertical}
+.receipt-preview{max-width:100%;max-height:280px;border-radius:13px;border:1px solid #3a352a;display:block;margin-top:10px}
+.service-admin-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.service-admin-card{border:1px solid #302d25;background:#10100e;border-radius:18px;padding:14px}
+.service-admin-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.service-admin-head strong{font-size:12px}.service-admin-head span{font-size:9px;color:#77736a}
+.image-preview{width:100%;height:125px;object-fit:cover;border-radius:13px;border:1px solid #39352b;background:#181713;margin-bottom:10px}
+.file-btn{display:inline-flex;align-items:center;justify-content:center;width:100%;border:1px dashed #514733;background:#18150f;color:#d9bb7d;border-radius:12px;padding:10px;font-size:10px}
+.file-btn input{display:none}
+.small-actions{display:flex;gap:8px;margin-top:10px}.small-actions>*{flex:1}
+.success-label{color:#69d2aa;font-size:9px}
+.danger-label{color:#e99393;font-size:9px}
+.timeline{display:grid;gap:8px}
+.timeline-step{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid #29271f;border-radius:12px;background:#12120f}
+.timeline-dot{width:9px;height:9px;border-radius:50%;background:#514c40}
+.timeline-step.active .timeline-dot{background:#d3b473;box-shadow:0 0 12px #d3b47355}
+.timeline-step b{font-size:10px}.timeline-step span{font-size:9px;color:#706c63;margin-right:auto}
+.admin-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.admin-kpi{padding:14px;border:1px solid #2b2923;border-radius:15px;background:#11110f}
+.admin-kpi span{font-size:9px;color:#77736a}.admin-kpi strong{display:block;font-size:18px;margin-top:5px;color:#dfbf7d}
+@media(max-width:700px){.detail-columns,.admin-grid,.service-admin-grid{grid-template-columns:1fr}.detail-modal{padding:16px}.filter-select{width:100%!important}}
+
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top">
+  <div class="logo"><div class="logo-mark">H</div><div><strong>Hesam Shop</strong><span>خدمات دیجیتال و سفارش آنلاین</span></div></div>
+  <div class="top-actions"><button class="ghost" onclick="go('orders')">پیگیری سفارش</button><button class="ghost" onclick="go('admin')">مدیریت</button></div>
+</header>
+
+<main>
+<section id="home" class="page active">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="eyebrow"><i class="dot"></i> HESAM SHOP · DIGITAL SERVICES</div>
+      <h1>سفارش حرفه‌ای، <b>تجربه متفاوت.</b></h1>
+      <p>خدمات دیجیتال و توسعه ربات با فرآیند سفارش شفاف، طراحی اختصاصی و پشتیبانی مستقیم.</p>
+      <div class="hero-actions"><button class="primary" onclick="go('members')">شروع سفارش</button><button class="secondary" onclick="go('robot')">ساخت ربات</button></div>
+    </div>
+    <div class="hero-stats"><div class="stat"><strong>02 سرویس</strong><span>خدمات اصلی</span></div><div class="stat"><strong>100٪</strong><span>پردازش سفارش</span></div><div class="stat"><strong>شفاف</strong><span>ثبت پرداخت</span></div></div>
+  </div>
+
+  <div class="section-head"><div><h2>خدمات Hesam Shop</h2></div><p>یکی از خدمات زیر را انتخاب کنید</p></div>
+  <div class="services">
+    <article class="service">
+      <div class="service-art"><div class="art-circle"></div><div class="art-icon">TS</div><span class="service-label">Telegram Service</span></div>
+      <div class="service-body"><h3>سفارش ممبر تلگرام</h3><p>فرم سفارش را تکمیل کنید، هزینه را کارت‌به‌کارت کنید و رسید را ارسال کنید. ادامه سفارش توسط مدیریت انجام می‌شود.</p><div class="service-foot"><span class="service-price">هر ۱۰۰۰ عدد · <span id="homeMemberPrice">۲۰۰٬۰۰۰ تومان</span></span><button class="mini-btn" onclick="go('members')">ثبت سفارش</button></div></div>
+    </article>
+    <article class="service robot">
+      <div class="service-art"><div class="art-circle"></div><div class="art-icon">BOT</div><span class="service-label">Bot Development</span></div>
+      <div class="service-body"><h3>سفارش ساخت ربات</h3><p>نوع ربات و زمان تحویل را انتخاب کنید و نیازمندی‌های پروژه را کامل برای تیم Hesam Shop ارسال کنید.</p><div class="service-foot"><span class="service-price">از ۱,۵۰۰,۰۰۰ تومان</span><button class="mini-btn" onclick="go('robot')">سفارش ربات</button></div></div>
+    </article>
+  </div>
+
+  <div class="section-head"><h2>چرا Hesam Shop؟</h2></div>
+  <div class="features"><div class="feature"><i>01</i><h4>ثبت سفارش منظم</h4><p>تمام مشخصات سفارش قبل از پرداخت ثبت می‌شود.</p></div><div class="feature"><i>02</i><h4>بررسی دستی</h4><p>هر سفارش توسط مدیریت بررسی و پردازش می‌شود.</p></div><div class="feature"><i>03</i><h4>ارسال رسید</h4><p>رسید پرداخت مستقیماً همراه سفارش ذخیره می‌شود.</p></div></div>
+</section>
+
+<section id="members" class="page">
+<button class="back" onclick="go('home')">→ <b>سفارش ممبر تلگرام</b></button>
+<div class="layout"><div class="panel"><div class="panel-title"><h2>اطلاعات سفارش</h2><span>مرحله ۱ از ۲</span></div>
+<div class="notice">تمام فیلدها الزامی هستند. پس از تکمیل اطلاعات، مبلغ سفارش محاسبه و وارد مرحله پرداخت می‌شوید.</div>
+<div class="field"><label>لینک کانال خود را وارد کنید <i class="req">*</i></label><input class="input" id="mLink" placeholder="https://t.me/yourchannel"></div>
+<div class="field"><label>تعداد موردنظر <i class="req">*</i></label><input class="input" id="mCount" type="number" min="1000" max="10000" step="1000" value="1000" oninput="calcM()"><div class="hint">حداقل ۱۰۰۰ و حداکثر ۱۰,۰۰۰</div></div>
+<div class="two"><div class="field"><label>شماره تلفن <i class="req">*</i></label><input class="input" id="mPhone" placeholder="09xxxxxxxxx"></div><div class="field"><label>یوزرنیم <i class="req">*</i></label><input class="input" id="mUser" placeholder="@username"></div></div><div class="field"><label>ایمیل / Gmail</label><input class="input" id="mEmail" type="email" placeholder="example@gmail.com"></div><div class="field"><label>ایمیل / Gmail <i class="req">*</i></label><input class="input" id="mEmail" type="email" placeholder="example@gmail.com"></div>
+<div class="price-box"><span>مبلغ سفارش</span><strong id="mTotal">۲۰۰٬۰۰۰ تومان</strong></div><button class="primary wide" onclick="memberNext()">ادامه و پرداخت</button></div>
+<aside class="info-card"><h3>جزئیات سرویس</h3><div class="info-list"><div class="info-row"><span>قیمت پایه</span><b id="mBasePrice">۲۰۰٬۰۰۰ تومان / ۱۰۰۰ عدد</b></div><div class="info-row"><span>حداقل</span><b>۱۰۰۰ عدد</b></div><div class="info-row"><span>حداکثر</span><b>۱۰,۰۰۰ عدد</b></div><div class="info-row"><span>پردازش</span><b>دستی توسط مدیریت</b></div></div></aside></div>
+</section>
+
+<section id="robot" class="page">
+<button class="back" onclick="go('home')">→ <b>سفارش ساخت ربات</b></button>
+<div class="layout"><div class="panel"><div class="panel-title"><h2>مشخصات پروژه</h2><span>مرحله ۱ از ۲</span></div>
+<div class="two"><div class="field"><label>اسم موردنظر ربات <i class="req">*</i></label><input class="input" id="rName" placeholder="مثلاً Hesam Shop"></div><div class="field"><label>آیدی موردنظر ربات <i class="req">*</i></label><input class="input" id="rUser" placeholder="@hesam_shop_bot"></div></div><div class="field"><label>ایمیل / Gmail</label><input class="input" id="rEmail" type="email" placeholder="example@gmail.com"></div><div class="field"><label>ایمیل / Gmail <i class="req">*</i></label><input class="input" id="rEmail" type="email" placeholder="example@gmail.com"></div>
+<div class="field"><label>مشخصات کامل و تکمیلی ربات <i class="req">*</i></label><textarea id="rDesc" placeholder="هر چیزی که برای ساخت ربات لازم است را کامل توضیح دهید..."></textarea><div class="hint">متن، جزئیات امکانات، صفحات، دکمه‌ها، قوانین و هر نیازمندی دیگری را بنویسید.</div></div>
+<div class="field"><label>فایل‌های تکمیلی</label><input class="input" id="rFile" type="file" multiple accept="image/*,video/*,.pdf,.zip,.rar"></div>
+<div class="field"><label>نوع ربات <i class="req">*</i></label><div class="options">
+<button class="opt" data-type="shop" onclick="typePick(this,'shop',prices.shop)"><strong>فروشگاهی</strong><span>فروش محصول، ثبت سفارش و مدیریت خرید.</span><em id="priceShop">۳,۰۰۰,۰۰۰ تومان</em></button>
+<button class="opt" data-type="booking" onclick="typePick(this,'booking',prices.booking)"><strong>نوبت‌دهی</strong><span>رزرو و مدیریت نوبت مشتریان.</span><em id="priceBooking">۲,۵۰۰,۰۰۰ تومان</em></button>
+<button class="opt" data-type="messenger" onclick="typePick(this,'messenger',prices.messenger)"><strong>پیام‌رسان</strong><span>ارتباط و ارسال پیام بین کاربران.</span><em id="priceMessenger">۲,۰۰۰,۰۰۰ تومان</em></button>
+<button class="opt" data-type="game" onclick="typePick(this,'game',prices.game)"><strong>بازی و سرگرمی</strong><span>امکانات تعاملی بازی و سرگرمی.</span><em id="priceGame">۲,۰۰۰,۰۰۰ تومان</em></button>
+<button class="opt" data-type="uploader" onclick="typePick(this,'uploader',prices.uploader)"><strong>آپلودر</strong><span>دریافت و مدیریت فایل‌ها.</span><em id="priceUploader">۱,۵۰۰,۰۰۰ تومان</em></button>
+</div></div>
+<div class="field"><label>زمان تحویل <i class="req">*</i></label><div class="options">
+<button class="opt" data-speed="fast" onclick="speedPick(this,'fast',prices.fast)"><strong>سریع · ۵ روز</strong><span>اولویت بالاتر در ساخت</span><em id="priceFast">+۱,۰۰۰,۰۰۰ تومان</em></button>
+<button class="opt" data-speed="medium" onclick="speedPick(this,'medium',prices.medium)"><strong>متوسط · ۱۰ روز</strong><span>زمان استاندارد</span><em id="priceMedium">+۷۰۰,۰۰۰ تومان</em></button>
+<button class="opt" data-speed="slow" onclick="speedPick(this,'slow',0)"><strong>کند · ۱۵ روز</strong><span>بدون هزینه اضافه</span><em>رایگان</em></button>
+</div></div>
+<div class="price-box"><span>مبلغ نهایی</span><strong id="rTotal">نوع ربات را انتخاب کنید</strong></div><button class="primary wide" onclick="robotNext()">ادامه و پرداخت</button></div>
+<aside class="info-card"><h3>قیمت‌گذاری شفاف</h3><div class="info-list"><div class="info-row"><span>فروشگاهی</span><b id="infoShop">۳,۰۰۰,۰۰۰ تومان</b></div><div class="info-row"><span>نوبت‌دهی</span><b id="infoBooking">۲,۵۰۰,۰۰۰ تومان</b></div><div class="info-row"><span>پیام‌رسان</span><b id="infoMessenger">۲,۰۰۰,۰۰۰ تومان</b></div><div class="info-row"><span>بازی</span><b id="infoGame">۲,۰۰۰,۰۰۰ تومان</b></div><div class="info-row"><span>آپلودر</span><b id="infoUploader">۱,۵۰۰,۰۰۰ تومان</b></div></div></aside></div>
+</section>
+
+<section id="payment" class="page">
+<button class="back" onclick="go('home')">→ <b>پرداخت سفارش</b></button>
+<div class="pay-grid"><div class="panel"><div class="panel-title"><h2>پرداخت کارت‌به‌کارت</h2><span>مرحله ۲ از ۲</span></div><div class="notice">پس از واریز مبلغ، تصویر واضح رسید را در همین صفحه ارسال کنید. تأیید پرداخت توسط مدیریت انجام می‌شود.</div>
+<div class="bank"><div class="bank-chip"></div><small style="color:#8394ab">شماره کارت</small><div class="bank-number" id="bankNumber">6037 0000 0000 0000</div><div class="bank-owner"><span>صاحب حساب</span><b id="bankOwner">Hesam Shop</b></div></div>
+<div class="price-box"><span>مبلغ قابل پرداخت</span><strong id="payAmount">-</strong></div>
+<button class="secondary wide" onclick="copyCard()">کپی شماره کارت</button></div>
+<div class="panel"><div class="panel-title"><h2>ارسال رسید</h2></div><div class="upload"><div style="font-size:12px;letter-spacing:2px;color:var(--gold2);margin-bottom:10px">UPLOAD RECEIPT</div><b>تصویر رسید را انتخاب کنید</b><span>فرمت‌های تصویری قابل قبول</span><input style="margin-top:18px" class="input" id="receipt" type="file" accept="image/*,.pdf" onchange="previewReceipt(this)">
+<div id="receiptPreviewBox" style="display:none;margin-top:12px">
+  <img id="receiptPreview" class="receipt-preview" alt="پیش‌نمایش رسید">
+  <div id="receiptFileName" style="font-size:9px;color:#77736a;margin-top:7px"></div>
+</div></div><button class="primary wide" style="margin-top:14px" onclick="finishOrder()">ثبت نهایی سفارش</button></div></div>
+</section>
+
+<section id="orders" class="page">
+<button class="back" onclick="go('home')">→ <b>پیگیری سفارش‌ها</b></button><div class="panel"><div class="panel-title"><h2>سفارش‌های ثبت‌شده</h2><span>Hesam Shop</span></div><div id="ordersList" class="orders"></div></div>
+</section>
+
+<section id="admin" class="page">
+<div id="adminLogin" class="admin-login panel"><div class="lock">H</div><h2>ورود به مدیریت</h2><p>برای دسترسی به پنل مدیریت Hesam Shop رمز عبور را وارد کنید.</p><div class="field"><label>رمز عبور مدیریت</label><input class="input" id="adminPass" type="password" placeholder="رمز عبور"></div><button class="primary wide" onclick="loginAdmin()">ورود به پنل</button></div>
+<div id="adminShell" class="admin-shell">
+<div class="admin-head"><div><h2>پنل مدیریت Hesam Shop</h2><p>کنترل کامل سفارش‌ها، قیمت‌ها، پرداخت و تنظیمات سایت</p></div><button class="logout" onclick="logoutAdmin()">خروج از مدیریت</button></div>
+<div class="dashboard"><div class="dash blue"><span>کل سفارش‌ها</span><strong id="dAll">۰</strong></div><div class="dash orange"><span>رسیدهای جدید</span><strong id="dPaid">۰</strong></div><div class="dash"><span>در حال انجام</span><strong id="dDoing">۰</strong></div><div class="dash green"><span>تکمیل‌شده</span><strong id="dDone">۰</strong></div></div>
+<div class="admin-layout"><aside class="admin-menu"><button class="active" onclick="adminTab('orders',this)">سفارش‌ها</button><button onclick="adminTab('pricing',this)">قیمت‌ها</button><button onclick="adminTab('services',this)">سرویس‌ها</button><button onclick="adminTab('paymentSettings',this)">پرداخت</button><button onclick="adminTab('site',this)">سایت</button><button onclick="adminTab('danger',this)">داده‌ها</button></aside>
+<div class="admin-content">
+<div id="a-orders" class="admin-card"><h3>مدیریت سفارش‌ها</h3>
+<div class="admin-toolbar">
+<input class="input admin-search" id="orderSearch" placeholder="جستجو با کد سفارش، شماره، ایمیل، آیدی یا نوع سرویس" oninput="renderAdmin()">
+<select class="input filter-select" id="orderFilter" onchange="renderAdmin()">
+<option value="all">همه وضعیت‌ها</option><option value="new">جدید</option><option value="paid">رسید دریافت شد</option><option value="doing">در حال انجام</option><option value="done">تکمیل‌شده</option>
+</select>
+</div>
+<div class="table-wrap"><table class="table"><thead><tr><th>شماره</th><th>نوع</th><th>مبلغ</th><th>تاریخ</th><th>وضعیت</th></tr></thead><tbody id="adminTable"></tbody></table></div></div>
+<div id="a-pricing" class="admin-card" style="display:none"><h3>مدیریت قیمت‌ها</h3><div class="setting-grid"><div class="field"><label>ممبر / هر ۱۰۰۰ عدد (تومان)</label><input class="input" id="pMember" type="number"></div><div class="field"><label>ربات فروشگاهی (تومان)</label><input class="input" id="pShop" type="number"></div><div class="field"><label>ربات نوبت‌دهی (تومان)</label><input class="input" id="pBooking" type="number"></div><div class="field"><label>ربات پیام‌رسان (تومان)</label><input class="input" id="pMessenger" type="number"></div><div class="field"><label>ربات بازی و سرگرمی (تومان)</label><input class="input" id="pGame" type="number"></div><div class="field"><label>ربات آپلودر (تومان)</label><input class="input" id="pUploader" type="number"></div><div class="field"><label>هزینه تحویل سریع (تومان)</label><input class="input" id="pFast" type="number"></div><div class="field"><label>هزینه تحویل متوسط (تومان)</label><input class="input" id="pMedium" type="number"></div></div><button class="primary wide" onclick="savePricing()">ذخیره قیمت‌ها</button></div>
+<div id="a-services" class="admin-card" style="display:none">
+<h3>مدیریت سرویس‌ها و تصاویر</h3>
+<p style="font-size:10px;color:#77736a;line-height:2;margin-top:-5px">برای هر سرویس تصویر انتخاب کن؛ تصویر در صفحه اصلی کارت همان سرویس نمایش داده می‌شود. همچنین عنوان، توضیح و قیمت قابل ویرایش است.</p>
+<div class="service-admin-grid">
+  <div class="service-admin-card">
+    <div class="service-admin-head"><strong>ممبر تلگرام</strong><span id="svcMemberState">بدون تصویر</span></div>
+    <img id="svcMemberPreview" class="image-preview" alt="">
+    <label class="file-btn">انتخاب تصویر<input type="file" accept="image/*" onchange="saveServiceImage('member',this)"></label>
+    <div class="field"><label>عنوان</label><input class="input" id="svcMemberTitle" value="سفارش ممبر تلگرام"></div>
+    <div class="field"><label>توضیح</label><textarea class="input" id="svcMemberDesc" style="min-height:90px">فرم سفارش را تکمیل کنید، هزینه را کارت‌به‌کارت کنید و رسید را ارسال کنید.</textarea></div>
+    <div class="small-actions"><button class="primary" onclick="saveServiceMeta('member')">ذخیره</button><button class="secondary" onclick="removeServiceImage('member')">حذف تصویر</button></div>
+  </div>
+  <div class="service-admin-card">
+    <div class="service-admin-head"><strong>ساخت ربات</strong><span id="svcRobotState">بدون تصویر</span></div>
+    <img id="svcRobotPreview" class="image-preview" alt="">
+    <label class="file-btn">انتخاب تصویر<input type="file" accept="image/*" onchange="saveServiceImage('robot',this)"></label>
+    <div class="field"><label>عنوان</label><input class="input" id="svcRobotTitle" value="سفارش ساخت ربات"></div>
+    <div class="field"><label>توضیح</label><textarea class="input" id="svcRobotDesc" style="min-height:90px">نوع ربات و زمان تحویل را انتخاب کنید و نیازمندی‌های پروژه را کامل ارسال کنید.</textarea></div>
+    <div class="small-actions"><button class="primary" onclick="saveServiceMeta('robot')">ذخیره</button><button class="secondary" onclick="removeServiceImage('robot')">حذف تصویر</button></div>
+  </div>
+</div>
+</div>
+<div id="a-paymentSettings" class="admin-card" style="display:none"><h3>اطلاعات پرداخت</h3><div class="setting-grid"><div class="field"><label>نام صاحب حساب</label><input class="input" id="sOwner"></div><div class="field"><label>شماره کارت</label><input class="input" id="sCard"></div></div><button class="primary wide" onclick="savePayment()">ذخیره اطلاعات پرداخت</button></div>
+<div id="a-site" class="admin-card" style="display:none"><h3>تنظیمات سایت</h3><div class="notice">از این بخش می‌توانی نام برند، متن معرفی و وضعیت متن Hero را کنترل کنی.</div><div class="field"><label>نام مجموعه</label><input class="input" id="sBrand"></div><div class="field"><label>متن معرفی</label><textarea id="sIntro" style="min-height:120px"></textarea></div><button class="primary wide" onclick="saveSite()">ذخیره تنظیمات</button></div>
+<div id="a-danger" class="admin-card" style="display:none"><h3>مدیریت داده‌ها</h3><p style="font-size:10px;color:#7e899b;line-height:2">این نسخه اطلاعات را در مرورگر ذخیره می‌کند. در نسخه واقعی باید این بخش به دیتابیس و احراز هویت سمت سرور متصل شود.</p><button class="wide" style="background:#3a161c;color:#ff8a96;border:1px solid #65232c" onclick="clearOrders()">حذف همه سفارش‌های ذخیره‌شده</button></div>
+</div></div></div>
+</section>
+</main>
+</div>
+
+<div id="detailOverlay" class="detail-overlay" onclick="if(event.target===this)closeOrderDetail()">
+  <div class="detail-modal">
+    <div class="detail-head"><div><h2 id="detailTitle">جزئیات سفارش</h2><div id="detailSub" style="font-size:9px;color:#77736a;margin-top:5px"></div></div><button class="close-detail" onclick="closeOrderDetail()">بستن</button></div>
+    <div id="detailContent"></div>
+  </div>
+</div>
+<footer style="padding:0 0 35px;text-align:center;color:#625f57;font-size:9px;letter-spacing:.2px">HESAM SHOP · DIGITAL SERVICES · ساخته‌شده برای یک تجربه حرفه‌ای</footer><div class="toast" id="toast"></div>
+<script>
+const ADMIN_PASSWORD="Hesam@2026#Shop";
+let orders=JSON.parse(localStorage.getItem('hesam_orders')||'[]');
+let settings=JSON.parse(localStorage.getItem('hesam_settings')||'{"owner":"Hesam Shop","card":"6037000000000000","brand":"Hesam Shop","intro":"خدمات دیجیتال و سفارش آنلاین"}');
+let prices=JSON.parse(localStorage.getItem('hesam_prices')||'{"member":200000,"shop":3000000,"booking":2500000,"messenger":2000000,"game":2000000,"uploader":1500000,"fast":1000000,"medium":700000}');
+let current=null,typeSel=null,speedSel=null;
+let serviceMedia=JSON.parse(localStorage.getItem('hesam_service_media')||'{}');
+let serviceMeta=JSON.parse(localStorage.getItem('hesam_service_meta')||'{}');
+let adminNoteTarget=null;
+
+const fa=n=>new Intl.NumberFormat('fa-IR').format(Number(n));
+const typeNames={shop:'فروشگاهی',booking:'نوبت‌دهی',messenger:'پیام‌رسان',game:'بازی و سرگرمی',uploader:'آپلودر'};
+const speedNames={fast:'سریع | ۵ روز',medium:'متوسط | ۱۰ روز',slow:'کند | ۱۵ روز'};
+
+function go(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='orders')renderOrders();if(id==='payment')renderPayment();if(id==='admin'&&sessionStorage.getItem('hesam_admin')==='1')openAdmin();scrollTo({top:0,behavior:'smooth'})}
+function toast(t){let x=document.getElementById('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),2300)}
+function calcM(){let n=Math.min(10000,Math.max(1000,Number(document.getElementById('mCount').value||1000)));document.getElementById('mTotal').textContent=fa(n/1000*prices.member)+' تومان';let b=document.getElementById('mBasePrice');if(b)b.textContent=fa(prices.member)+' تومان / ۱۰۰۰ عدد';let h=document.getElementById('homeMemberPrice');if(h)h.textContent=fa(prices.member)+' تومان'}
+function req(ids){let ok=true;ids.forEach(id=>{let e=document.getElementById(id);if(!e.value.trim()){e.style.borderColor='#ff6474';ok=false}else e.style.borderColor='' });if(!ok)toast('لطفاً تمام موارد الزامی را تکمیل کنید');return ok}
+function memberNext(){if(!req(['mLink','mCount','mPhone','mUser']))return;let n=Number(mCount.value);if(n<1000||n>10000){toast('تعداد باید بین ۱۰۰۰ تا ۱۰,۰۰۰ باشد');return}current={service:'ممبر تلگرام',amount:n/1000*prices.member,data:{link:mLink.value,count:n,phone:mPhone.value,user:mUser.value,email:document.getElementById('mEmail')?.value||''}};go('payment')}
+function typePick(el,t,p){document.querySelectorAll('[data-type]').forEach(x=>x.classList.remove('active'));el.classList.add('active');typeSel={t,p};robotCalc()}
+function speedPick(el,s,p){document.querySelectorAll('[data-speed]').forEach(x=>x.classList.remove('active'));el.classList.add('active');speedSel={s,p};robotCalc()}
+function robotCalc(){if(!typeSel){rTotal.textContent='نوع ربات را انتخاب کنید';return}rTotal.textContent=fa(typeSel.p+(speedSel?speedSel.p:0))+' تومان'}
+function robotNext(){if(!req(['rName','rUser','rDesc']))return;if(!typeSel||!speedSel){toast('نوع ربات و زمان تحویل را انتخاب کنید');return}current={service:'ساخت ربات',amount:typeSel.p+speedSel.p,data:{name:rName.value,user:rUser.value,email:document.getElementById('rEmail')?.value||'',desc:rDesc.value,robotType:typeNames[typeSel.t],speed:speedNames[speedSel.s]}};go('payment')}
+function cardFormat(v){return v.replace(/\D/g,'').replace(/(.{4})/g,'$1 ').trim()}
+function renderPayment(){bankNumber.textContent=cardFormat(settings.card);bankOwner.textContent=settings.owner;payAmount.textContent=current?fa(current.amount)+' تومان':'-'}
+function copyCard(){navigator.clipboard?.writeText(settings.card);toast('شماره کارت کپی شد')}
+async function finishOrder(){
+  if(!current){toast('سفارشی برای پرداخت وجود ندارد');return}
+  let f=document.getElementById('receipt').files[0];
+  if(!f){toast('تصویر یا فایل رسید را انتخاب کنید');return}
+
+  let receiptData='';
+  if(f.type.startsWith('image/')){
+    try{
+      receiptData=await compressImageForStorage(f,1500,0.78);
+    }catch(e){
+      receiptData=await fileToDataURL(f);
+    }
+  }
+
+  let robotFile=document.getElementById('rFile')?.files?.[0];
+  let o={
+    id:'HS-'+Date.now().toString().slice(-8),
+    service:current.service,
+    amount:current.amount,
+    data:{...current.data,robotFile:robotFile?robotFile.name:''},
+    status:'paid',
+    date:new Date().toLocaleString('fa-IR'),
+    receipt:f.name,
+    receiptType:f.type||'',
+    receiptData,
+    note:''
+  };
+  orders.unshift(o);
+  try{
+    localStorage.setItem('hesam_orders',JSON.stringify(orders));
+  }catch(e){
+    // If the browser storage is full, keep the order but explain why the image may not persist.
+    toast('حجم اطلاعات مرورگر پر شده؛ رسید تصویر ذخیره نشد');
+  }
+  current=null;
+  document.getElementById('receipt').value='';
+  document.getElementById('receiptPreviewBox').style.display='none';
+  toast('سفارش با موفقیت ثبت شد');
+  go('orders')
+}
+function fileToDataURL(file){
+  return new Promise((resolve,reject)=>{
+    let r=new FileReader();
+    r.onload=()=>resolve(r.result);
+    r.onerror=reject;
+    r.readAsDataURL(file);
+  });
+}
+function compressImageForStorage(file,maxSide=1500,quality=.78){
+  return new Promise((resolve,reject)=>{
+    let reader=new FileReader();
+    reader.onerror=reject;
+    reader.onload=()=>{
+      let img=new Image();
+      img.onload=()=>{
+        let scale=Math.min(1,maxSide/Math.max(img.width,img.height));
+        let canvas=document.createElement('canvas');
+        canvas.width=Math.max(1,Math.round(img.width*scale));
+        canvas.height=Math.max(1,Math.round(img.height*scale));
+        let ctx=canvas.getContext('2d');
+        ctx.drawImage(img,0,0,canvas.width,canvas.height);
+        resolve(canvas.toDataURL('image/jpeg',quality));
+      };
+      img.onerror=reject;
+      img.src=reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+function previewReceipt(input){
+  let f=input.files[0],box=document.getElementById('receiptPreviewBox'),img=document.getElementById('receiptPreview'),name=document.getElementById('receiptFileName');
+  if(!f){box.style.display='none';return}
+  name.textContent=f.name;
+  if(f.type.startsWith('image/')){
+    img.src=URL.createObjectURL(f);
+    img.style.display='block';
+  }else{
+    img.removeAttribute('src');
+    img.style.display='none';
+  }
+  box.style.display='block';
+}
+function loadAdminSettings(){pMember.value=prices.member;pShop.value=prices.shop;pBooking.value=prices.booking;pMessenger.value=prices.messenger;pGame.value=prices.game;pUploader.value=prices.uploader;pFast.value=prices.fast;pMedium.value=prices.medium;sOwner.value=settings.owner;sCard.value=settings.card;sBrand.value=settings.brand;sIntro.value=settings.intro}
+function savePricing(){prices={member:+pMember.value,shop:+pShop.value,booking:+pBooking.value,messenger:+pMessenger.value,game:+pGame.value,uploader:+pUploader.value,fast:+pFast.value,medium:+pMedium.value};localStorage.setItem('hesam_prices',JSON.stringify(prices));refreshPriceUI();toast('قیمت‌ها ذخیره شد')}
+function savePayment(){settings.owner=sOwner.value;settings.card=sCard.value.replace(/\s/g,'');localStorage.setItem('hesam_settings',JSON.stringify(settings));renderPayment();toast('اطلاعات پرداخت ذخیره شد')}
+function saveSite(){settings.brand=sBrand.value;settings.intro=sIntro.value;localStorage.setItem('hesam_settings',JSON.stringify(settings));toast('تنظیمات سایت ذخیره شد')}
+function clearOrders(){if(confirm('همه سفارش‌ها حذف شوند؟')){orders=[];localStorage.setItem('hesam_orders','[]');renderAdmin();toast('داده‌ها حذف شد')}}
+
+function saveServiceImage(type,input){
+  let f=input.files[0]; if(!f)return;
+  if(f.size>2.5*1024*1024){toast('حجم تصویر بهتر است کمتر از ۲.۵ مگابایت باشد');return}
+  fileToDataURL(f).then(data=>{
+    serviceMedia[type]=data;localStorage.setItem('hesam_service_media',JSON.stringify(serviceMedia));
+    applyServiceMedia();loadServiceAdmin();toast('تصویر سرویس ذخیره شد')
+  })
+}
+function removeServiceImage(type){
+  delete serviceMedia[type];localStorage.setItem('hesam_service_media',JSON.stringify(serviceMedia));
+  applyServiceMedia();loadServiceAdmin();toast('تصویر حذف شد')
+}
+function saveServiceMeta(type){
+  serviceMeta[type]={
+    title:document.getElementById(type==='member'?'svcMemberTitle':'svcRobotTitle').value,
+    desc:document.getElementById(type==='member'?'svcMemberDesc':'svcRobotDesc').value
+  };
+  localStorage.setItem('hesam_service_meta',JSON.stringify(serviceMeta));
+  applyServiceMeta();toast('اطلاعات سرویس ذخیره شد')
+}
+function applyServiceMedia(){
+  let cards=document.querySelectorAll('.service');
+  if(cards[0]){
+    let art=cards[0].querySelector('.service-art');
+    if(serviceMedia.member){art.style.backgroundImage=`linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.55)),url(${serviceMedia.member})`;art.style.backgroundSize='cover';art.style.backgroundPosition='center'}
+    else {art.style.backgroundImage='';}
+  }
+  if(cards[1]){
+    let art=cards[1].querySelector('.service-art');
+    if(serviceMedia.robot){art.style.backgroundImage=`linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.55)),url(${serviceMedia.robot})`;art.style.backgroundSize='cover';art.style.backgroundPosition='center'}
+    else {art.style.backgroundImage='';}
+  }
+}
+function applyServiceMeta(){
+  let cards=document.querySelectorAll('.service');
+  if(cards[0]&&serviceMeta.member){cards[0].querySelector('h3').textContent=serviceMeta.member.title||'سفارش ممبر تلگرام';cards[0].querySelector('p').textContent=serviceMeta.member.desc||''}
+  if(cards[1]&&serviceMeta.robot){cards[1].querySelector('h3').textContent=serviceMeta.robot.title||'سفارش ساخت ربات';cards[1].querySelector('p').textContent=serviceMeta.robot.desc||''}
+}
+function loadServiceAdmin(){
+  let m=serviceMeta.member||{},r=serviceMeta.robot||{};
+  svcMemberTitle.value=m.title||'سفارش ممبر تلگرام';svcMemberDesc.value=m.desc||'فرم سفارش را تکمیل کنید، هزینه را کارت‌به‌کارت کنید و رسید را ارسال کنید.';
+  svcRobotTitle.value=r.title||'سفارش ساخت ربات';svcRobotDesc.value=r.desc||'نوع ربات و زمان تحویل را انتخاب کنید و نیازمندی‌های پروژه را کامل ارسال کنید.';
+  svcMemberPreview.src=serviceMedia.member||'';svcRobotPreview.src=serviceMedia.robot||'';
+  svcMemberState.textContent=serviceMedia.member?'تصویر فعال':'بدون تصویر';svcRobotState.textContent=serviceMedia.robot?'تصویر فعال':'بدون تصویر';
+}
+function statusLabel(s){return s==='done'?'تکمیل‌شده':s==='doing'?'در حال انجام':s==='paid'?'رسید دریافت شد':'جدید'}
+function openOrderDetail(id){
+  let o=orders.find(x=>x.id===id);if(!o)return;
+  adminNoteTarget=id;
+  detailTitle.textContent='جزئیات سفارش '+o.id;
+  detailSub.textContent=o.service+' · '+o.date;
+  let d=o.data||{};
+  let fields=Object.entries(d).filter(([k])=>k!=='desc').map(([k,v])=>{
+    let names={link:'لینک کانال',count:'تعداد',phone:'شماره تلفن',user:'یوزرنیم',email:'ایمیل / Gmail',name:'نام ربات',robotType:'نوع ربات',speed:'زمان تحویل',robotFile:'فایل پروژه'};
+    return `<div class="detail-item"><span>${names[k]||k}</span><b>${v||'—'}</b></div>`
+  }).join('');
+  let desc=d.desc?`<div class="detail-card"><h4>شرح کامل پروژه</h4><div style="font-size:10px;line-height:2;color:#bdb7aa;white-space:pre-wrap">${escapeHtml(d.desc)}</div></div>`:'';
+  let timeline=['new','paid','doing','done'];let idx=timeline.indexOf(o.status);
+  let tl=timeline.map((s,i)=>`<div class="timeline-step ${i<=idx?'active':''}"><i class="timeline-dot"></i><b>${statusLabel(s)}</b><span>${i<=idx?'ثبت شده':'در انتظار'}</span></div>`).join('');
+  detailContent.innerHTML=`
+    <div class="detail-columns">
+      <div class="detail-card"><h4>اطلاعات مشتری و سفارش</h4>${fields||'<div class="empty">اطلاعاتی ثبت نشده</div>'}</div>
+      <div class="detail-card"><h4>مدیریت سفارش</h4>
+        <div class="detail-item"><span>مبلغ</span><b>${fa(o.amount)} تومان</b></div>
+        <div class="detail-item"><span>وضعیت</span><b>${statusLabel(o.status)}</b></div>
+        <div class="field" style="margin-top:12px"><label>تغییر وضعیت</label><select class="input" onchange="setStatus('${o.id}',this.value)"><option value="new" ${o.status==='new'?'selected':''}>جدید</option><option value="paid" ${o.status==='paid'?'selected':''}>رسید دریافت شد</option><option value="doing" ${o.status==='doing'?'selected':''}>در حال انجام</option><option value="done" ${o.status==='done'?'selected':''}>تکمیل‌شده</option></select></div>
+        <div class="field"><label>یادداشت داخلی مدیریت</label><textarea class="input note-box" id="orderNote">${escapeHtml(o.note||'')}</textarea></div>
+        <button class="primary wide" onclick="saveOrderNote('${o.id}')">ذخیره یادداشت</button>
+      </div>
+    </div>
+    ${desc}
+    <div class="detail-columns" style="margin-top:12px">
+      <div class="detail-card"><h4>روند سفارش</h4><div class="timeline">${tl}</div></div>
+      <div class="detail-card"><h4>رسید پرداخت</h4><div style="font-size:9px;color:#77736a;margin-bottom:8px">رسیدهای تصویری جدید با خود سفارش ذخیره و همین‌جا قابل مشاهده هستند.</div>${o.receiptData
+  ? `<img class="receipt-preview" src="${o.receiptData}" alt="رسید پرداخت">`
+  : `<div class="empty">برای این سفارش تصویر رسید در حافظه ذخیره نشده است.<br>نام فایل: ${escapeHtml(o.receipt||'—')}</div>`}
+${o.receipt && !o.receiptData ? `<div style="font-size:9px;color:#77736a;margin-top:8px">اگر رسید به‌صورت PDF یا فایل غیرتصویری ارسال شده باشد، نام فایل ثبت می‌شود ولی پیش‌نمایش تصویری ندارد.</div>` : ''}</div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-top:12px"><button class="logout" onclick="deleteOrder('${o.id}')">حذف این سفارش</button></div>`;
+  detailOverlay.classList.add('show');
+}
+function saveOrderNote(id){
+  let o=orders.find(x=>x.id===id);if(!o)return;o.note=document.getElementById('orderNote').value;
+  localStorage.setItem('hesam_orders',JSON.stringify(orders));toast('یادداشت سفارش ذخیره شد')
+}
+function deleteOrder(id){
+  if(!confirm('این سفارش حذف شود؟'))return;
+  orders=orders.filter(x=>x.id!==id);localStorage.setItem('hesam_orders',JSON.stringify(orders));closeOrderDetail();renderAdmin();toast('سفارش حذف شد')
+}
+function closeOrderDetail(){detailOverlay.classList.remove('show');adminNoteTarget=null}
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+
+function loginAdmin(){
+  const input=document.getElementById('adminPass');
+  if(!input)return;
+  if(input.value===ADMIN_PASSWORD){
+    sessionStorage.setItem('hesam_admin','1');
+    openAdmin();
+    input.value='';
+    toast('ورود به مدیریت موفق بود');
+  }else{
+    input.value='';
+    input.style.borderColor='#ff6474';
+    toast('رمز عبور مدیریت صحیح نیست');
+    setTimeout(()=>input.style.borderColor='',1200);
+  }
+}
+function openAdmin(){
+  const login=document.getElementById('adminLogin');
+  const shell=document.getElementById('adminShell');
+  if(!login||!shell)return;
+  login.style.display='none';
+  shell.style.display='block';
+  loadAdminSettings();
+  renderAdmin();
+  adminTab('orders',document.querySelector('.admin-menu button'));
+}
+function logoutAdmin(){
+  sessionStorage.removeItem('hesam_admin');
+  const login=document.getElementById('adminLogin');
+  const shell=document.getElementById('adminShell');
+  if(login)login.style.display='block';
+  if(shell)shell.style.display='none';
+  go('home');
+  toast('از مدیریت خارج شدید');
+}
+function renderOrders(){
+  const box=document.getElementById('ordersList');
+  if(!box)return;
+  if(!orders.length){
+    box.innerHTML='<div class="empty">هنوز سفارشی ثبت نشده است.</div>';
+    return;
+  }
+  box.innerHTML=orders.map(o=>`
+    <div class="order-card">
+      <div><strong>${escapeHtml(o.id)}</strong><span>${escapeHtml(o.service)}</span></div>
+      <div><b>${fa(o.amount)} تومان</b><span>${escapeHtml(o.date||'')}</span></div>
+      <div><span>وضعیت</span><b>${statusLabel(o.status)}</b></div>
+    </div>`).join('');
+}
+function renderAdmin(){
+  const all=document.getElementById('dAll'), paid=document.getElementById('dPaid'), doing=document.getElementById('dDoing'), done=document.getElementById('dDone');
+  if(all)all.textContent=fa(orders.length);
+  if(paid)paid.textContent=fa(orders.filter(x=>x.status==='paid').length);
+  if(doing)doing.textContent=fa(orders.filter(x=>x.status==='doing').length);
+  if(done)done.textContent=fa(orders.filter(x=>x.status==='done').length);
+
+  const table=document.getElementById('adminTable');
+  if(!table)return;
+  const q=(document.getElementById('orderSearch')?.value||'').trim().toLowerCase();
+  const filter=document.getElementById('orderFilter')?.value||'all';
+  const filtered=orders.filter(o=>{
+    const d=o.data||{};
+    const hay=[o.id,o.service,o.date,d.phone,d.email,d.user,d.link,d.name,d.robotType,d.speed].join(' ').toLowerCase();
+    return (!q||hay.includes(q))&&(filter==='all'||o.status===filter);
+  });
+  table.innerHTML=filtered.length?filtered.map(o=>`
+    <tr class="order-row" onclick="openOrderDetail('${o.id}')">
+      <td>${escapeHtml(o.id)}</td>
+      <td>${escapeHtml(o.service)}</td>
+      <td>${fa(o.amount)} تومان</td>
+      <td>${escapeHtml(o.date||'')}</td>
+      <td>
+        <select onclick="event.stopPropagation()" onchange="setStatus('${o.id}',this.value)">
+          <option value="new" ${o.status==='new'?'selected':''}>جدید</option>
+          <option value="paid" ${o.status==='paid'?'selected':''}>رسید دریافت شد</option>
+          <option value="doing" ${o.status==='doing'?'selected':''}>در حال انجام</option>
+          <option value="done" ${o.status==='done'?'selected':''}>تکمیل‌شده</option>
+        </select>
+      </td>
+    </tr>`).join(''):'<tr><td colspan="5" class="empty">سفارشی با این مشخصات پیدا نشد.</td></tr>';
+}
+function setStatus(id,status){
+  const o=orders.find(x=>x.id===id);
+  if(!o)return;
+  o.status=status;
+  localStorage.setItem('hesam_orders',JSON.stringify(orders));
+  renderAdmin();
+  if(adminNoteTarget===id)openOrderDetail(id);
+  toast('وضعیت سفارش تغییر کرد');
+}
+function adminTab(id,el){
+  document.querySelectorAll('.admin-menu button').forEach(x=>x.classList.remove('active'));
+  if(el)el.classList.add('active');
+  ['orders','pricing','services','paymentSettings','site','danger'].forEach(x=>{
+    const node=document.getElementById('a-'+x);
+    if(node)node.style.display=(x===id?'block':'none');
+  });
+  if(id==='pricing'||id==='paymentSettings'||id==='site')loadAdminSettings();
+  if(id==='services')loadServiceAdmin();
+}
+function refreshPriceUI(){
+  const ids={
+    homeMemberPrice:prices.member,
+    mBasePrice:prices.member,
+    priceShop:prices.shop,
+    priceBooking:prices.booking,
+    priceMessenger:prices.messenger,
+    priceGame:prices.game,
+    priceUploader:prices.uploader
+  };
+  Object.entries(ids).forEach(([id,val])=>{
+    const e=document.getElementById(id);
+    if(!e)return;
+    if(id==='homeMemberPrice')e.textContent=fa(val)+' تومان';
+    else if(id==='mBasePrice')e.textContent=fa(val)+' تومان / ۱۰۰۰ عدد';
+    else e.textContent=fa(val)+' تومان';
+  });
+  robotCalc();
+}
+
+applyServiceMedia();applyServiceMeta();
+
+calcM();renderPayment();
+</script>
+</body>
+</html>
